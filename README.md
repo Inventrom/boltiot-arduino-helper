@@ -13,17 +13,17 @@ Please follow the following steps to include the bolt library to arduino
 
 Example 1 : Interfacing via hardware serial port
 
-#include <Bolt.h>
+#include <BoltIot-Arduino-Helper.h>
 
 void setup() {
-  bolt.Begin(Serial); //Initialize the bolt interface over serial uart. Serial could be replaced with Serial0 or Serial1 on arduino mega boards.
+  boltiot.Begin(Serial); //Initialize the bolt interface over serial uart. Serial could be replaced with Serial0 or Serial1 on arduino mega boards.
 		   //In this example Tx pin of bolt is connected to rx pin of arduino Serial Port
 		   //and rx pin of bolt is connected to tx pin of arduino Serial Port
   pinMode(2,INPUT); //Set pin 2 as the input. We will use send this pin's state as the data to the bolt cloud
 }
 
 void loop() {
-  bolt.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
+  boltiot.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
 /*This function needs to be called reglarly. Calling the CheckPoll function once every seconds is required*/
 }
 
@@ -31,10 +31,10 @@ void loop() {
 
 Example 2: Interfacing via software serial port
 
-#include <Bolt.h>
+#include <BoltIot-Arduino-Helper.h>
 
 void setup() {
-  bolt.Begin(3,4); //Initialize the bolt interface over software serial uart.
+  boltiot.Begin(3,4); //Initialize the bolt interface over software serial uart.
 		   //In this example Tx pin of bolt is connected to pin 3 of arduino
 		   //and rx pin of bolt is connected to pin 4 of arduino
   pinMode(2,INPUT); //Set pin 2 as the input. We will use send this pin's state as the data to the bolt cloud
