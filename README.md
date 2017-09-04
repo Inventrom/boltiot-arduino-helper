@@ -12,7 +12,7 @@ Please follow the following steps to include the bolt library to arduino
 5. Press ok and the library is loaded to your arduino ide.
 
 ## Examples
-#Interfacing via hardware serial port
+# Interfacing via hardware serial port
 ```
 #include <BoltIot-Arduino-Helper.h>
 
