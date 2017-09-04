@@ -6,7 +6,7 @@ By using this library, any data collected or processed by the arduino can be sne
 ## Installation steps
 Please follow the following steps to include the bolt library to arduino
 1. Click on clone or download button and download the zip
-2. Open Arduino Ide.
+2. Open Arduino IDE.
 3. Click on Sketch->Add Library->Add .Zip library.
 4. Navigate to the folder where Bolt.zip was downloaded, and select Bolt.zip.
 5. Press ok and the library is loaded to your arduino ide.
