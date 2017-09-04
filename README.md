@@ -1,10 +1,10 @@
-# Discription
-This library reduces the effort required to interface and arduino to a bolt module.
-The libraray supports hardware as well as software serial uarts, as such the bolt can be interfaced to the with any pins of the arduino. But it would be more robust to use hardware uart over software uart.
-By using this library, any data collected or processed by the arduino can be snet to the bolt cloud, without much programming.
+# Description
+This library reduces the effort required to interface and Arduino to a Bolt module.
+The library supports hardware as well as software serial UARTs, as such the Bolt can be interfaced to with any pins of the Arduino. But it would be more robust to use hardware UART over software UART.
+By using this library, any data collected or processed by the Arduino can be sent to the Bolt Cloud.
 
 # Installation steps
-Please follow the following steps to include the bolt library to arduino
+Please follow the steps to include the bolt library to arduino
 1. Click on clone or download button and download the zip
 2. Open Arduino IDE.
 3. Click on Sketch->Add Library->Add .Zip library.
