@@ -1,18 +1,19 @@
+##Discription
 This library reduces the effort required to interface and arduino to a bolt module.
 The libraray supports hardware as well as software serial uarts, as such the bolt can be interfaced to the with any pins of the arduino. But it would be more robust to use hardware uart over software uart.
 By using this library, any data collected or processed by the arduino can be snet to the bolt cloud, without much programming.
 
-
+##Installation steps
 Please follow the following steps to include the bolt library to arduino
-1)Click on clone or download button and download the zip
-2)Open Arduino Ide.
-3)Click on Sketch->Add Library->Add .Zip library.
-4)Navigate to the folder where Bolt.zip was downloaded, and select Bolt.zip.
-5)Press ok and the library is loaded to your arduino ide.
+1. Click on clone or download button and download the zip
+2. Open Arduino Ide.
+3. Click on Sketch->Add Library->Add .Zip library.
+4. Navigate to the folder where Bolt.zip was downloaded, and select Bolt.zip.
+5. Press ok and the library is loaded to your arduino ide.
 
-
-Example 1 : Interfacing via hardware serial port
-
+##Examples
+#Interfacing via hardware serial port
+```
 #include <BoltIot-Arduino-Helper.h>
 
 void setup() {
@@ -26,11 +27,11 @@ void loop() {
   boltiot.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
 /*This function needs to be called reglarly. Calling the CheckPoll function once every seconds is required*/
 }
+```
 
 
-
-Example 2: Interfacing via software serial port
-
+#Interfacing via software serial port
+```
 #include <BoltIot-Arduino-Helper.h>
 
 void setup() {
@@ -44,3 +45,4 @@ void loop() {
   bolt.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
 /*This function needs to be called reglarly. Calling the CheckPoll function once every seconds is required*/
 }
+```
