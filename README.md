@@ -1,9 +1,9 @@
-##Discription
+## Discription
 This library reduces the effort required to interface and arduino to a bolt module.
 The libraray supports hardware as well as software serial uarts, as such the bolt can be interfaced to the with any pins of the arduino. But it would be more robust to use hardware uart over software uart.
 By using this library, any data collected or processed by the arduino can be snet to the bolt cloud, without much programming.
 
-##Installation steps
+## Installation steps
 Please follow the following steps to include the bolt library to arduino
 1. Click on clone or download button and download the zip
 2. Open Arduino Ide.
@@ -11,7 +11,7 @@ Please follow the following steps to include the bolt library to arduino
 4. Navigate to the folder where Bolt.zip was downloaded, and select Bolt.zip.
 5. Press ok and the library is loaded to your arduino ide.
 
-##Examples
+## Examples
 #Interfacing via hardware serial port
 ```
 #include <BoltIot-Arduino-Helper.h>
@@ -30,7 +30,7 @@ void loop() {
 ```
 
 
-#Interfacing via software serial port
+# Interfacing via software serial port
 ```
 #include <BoltIot-Arduino-Helper.h>
 
