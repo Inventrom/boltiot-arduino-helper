@@ -42,7 +42,7 @@ void setup() {
 }
 
 void loop() {
-  bolt.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
+  boltiot.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
 /*This function needs to be called reglarly. Calling the CheckPoll function once every seconds is required*/
 }
 ```
