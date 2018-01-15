@@ -13,9 +13,9 @@
 #include <HardwareSerial.h>
 #include <SoftwareSerial.h>
 
-/* Class which handles the communication with bolt over UART
- * The UART can be any hardware serial or software serial port
+/* This structure holds all the commands set by the user.
  */
+
 struct CommandList{
     String command;
     String (*command_function)(String *);
@@ -23,6 +23,9 @@ struct CommandList{
     CommandList *next;
 };
 
+/* Class which handles the communication with bolt over UART
+ * The UART can be any hardware serial or software serial port
+ */
 class BoltIot{
     Stream *communication_port; //Holds the communication port at which Bolt is connected.
     String command_received;    //Holds the command currently being passed
