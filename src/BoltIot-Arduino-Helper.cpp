@@ -1,6 +1,6 @@
 /* Provided by Inventrom for interfacing bolt to Arduino */
 
-#include <BoltIot-Arduino-Helper.h>
+#include "BoltIot-Arduino-Helper.h"
 
 BoltIot boltiot;
 void BoltIot::Begin(HardwareSerial& uart){

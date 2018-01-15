@@ -16,6 +16,13 @@
 /* Class which handles the communication with bolt over UART
  * The UART can be any hardware serial or software serial port
  */
+struct CommandList{
+    String command;
+    String (*command_function)(String *);
+    int number_of_arguments;
+    CommandList *next;
+};
+
 class BoltIot{
     Stream *communication_port; //Holds the communication port at which Bolt is connected.
     String command_received;    //Holds the command currently being passed
@@ -39,12 +46,27 @@ public:
      * At the least 1 variable has to be set by the user.
      */
     void CheckPoll(float a,float b=0,float c=0,float d=0,float e=0,float f=0);
-
-
+    
+    
+    /* 
+     * @Future_development
+     * This function iterates through the whole list of commands vs command functions and calls the command function depending on the command received.
+     */
+    
+    void HandleCommand();
+    
     /* @Future_Development:
      * This string currently only provides the data buffered in the bolt class.
      */
     String GetCommandString();
+    
+    /* @Future_Development:
+     * This 
+     */
+    void SetCommandString(String command, String (*command_function)(String *),int number_of_arguments=0);
+    
+private:
+    CommandList commandList;
 };
 
 extern BoltIot boltiot; //Variable defined in the header so that user does not have to define the variable
