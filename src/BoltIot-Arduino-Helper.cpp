@@ -44,3 +44,19 @@ void BoltIot::CheckPoll(float a,float b,float c,float d,float e,float f){
 String BoltIot::GetCommandString(){
     return this->command_received;
 }
+
+void BoltIot::SetCommandString(String command, String(*command_function)(String*), int number_of_arguments){
+    /*
+     * This function is called to parse possible functions to be received from the Bolt.
+     * The command string defines the possible function.
+     * the command function points to a function which should be called in the event command is received.
+     * number of arguments is optional with 0 default. The are the number of arguments, which BoltIoT should wait for before calling the command fucntion.
+     * The arguments received are passed to the command function as an array of strings.
+     */
+}
+
+void BoltIot::HandleCommand(){
+    /*
+     * This function replaces checkpoll. and should be called periodically.
+     */
+}
