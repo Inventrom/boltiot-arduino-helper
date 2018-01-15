@@ -35,3 +35,7 @@ void setup(){
 	boltiot.SetCommandString("GetData",Return_Extra_Monitoring_Data);
 	boltiot.SetCommandString("PWM",Run_PWM_Command,2);  //2 arguments are required, 1 is pwm channel and 2 is pwm value.
 }
+
+void loop(){
+	boltiot.HandleCommand();
+}
