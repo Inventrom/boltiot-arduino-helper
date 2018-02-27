@@ -20,7 +20,11 @@ struct CommandList{
     String command;
     String (*command_function)(String *);
     int number_of_arguments;
+    int numberOfArgumentsFound;
+    String* arguments;
     CommandList *next;
+    String returnData;
+    char dataDelimiter;
 };
 
 /* Class which handles the communication with bolt over UART
@@ -30,6 +34,8 @@ class BoltIot{
     Stream *communication_port; //Holds the communication port at which Bolt is connected.
     String command_received;    //Holds the command currently being passed
 public:
+    
+    BoltIot();
     /* Used to initialize the bolt class with Hardware Serial port. The function starts the uart at 9600, the required baud rate for bolt
      * uart-Hardware serial port to which Bolt is connected. Can be Serial, Serial0, Serial1
      */
@@ -66,10 +72,15 @@ public:
     /* @Future_Development:
      * This 
      */
-    void SetCommandString(String command, String (*command_function)(String *),int number_of_arguments=0);
+    void SetCommandString(String command, String (*command_function)(String *),int number_of_arguments=0,char dataDelimiter=' ');
     
+    void SetArgumentTimeout(long timeout);
 private:
-    CommandList commandList;
+    CommandList *commandList;
+    bool checkIfCommandReceived(String command);
+    bool runCommand(CommandList &commandStruct,char data);
+    long argumentReadTimeout;
+    CommandList *currentMonitoredCommand;
 };
 
 extern BoltIot boltiot; //Variable defined in the header so that user does not have to define the variable
