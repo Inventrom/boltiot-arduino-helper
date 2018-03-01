@@ -21,6 +21,11 @@
  */
 
 class BoltIoT {
+    /*
+     * These are the states of the library monitoring incoming commands.
+     */
+    static const int DiscardCurrentData=-2;
+    static const int WaitForFirstDelimiter=-1;
 
     /*
      * This class acts like a linked list and holds all data related to all configured commands.
@@ -29,8 +34,8 @@ class BoltIoT {
     public:
         String command; //Holds the command to be checked for.
         String(*commandCallback)(String *); // Hold the callback related to the command.
-        int numberOfArguments; // Number of arguments that will be sent along with the command.
-        int numberOfArgumentsFound; //Number of arguments currently found.
+        int numberOfArgumentsExpected; // Number of arguments that will be sent along with the command.
+        int numberOfArgumentsReceived; //Number of arguments currently found.
         String* arguments; // String containing the arguments.
         String returnData; //Holds the data returned by the callback, which has to be sent back
         char dataDelimiter; //the character which will separate the command from arguments. Example SetPin;pinNumber=3;pinState=HIGH;
@@ -115,13 +120,13 @@ public:
 
 
     /* This function is deprecated.
-     * If possible use the checkPoll function instead.
+     * If possible use the processPushDataCommand function instead.
      */
     void CheckPoll(float var1, float var2 = 0, float var3 = 0, float var4 = 0, float var5 = 0, float var6 = 0);
     
     /*
      * This function has to be called from the loop function.
-     * The CheckPoll function checks for data received on the uart
+     * The processPushDataCommand function checks for data received on the uart
      * and confirms with the bolt has sent the read command("RD\\r") 
      * to the Arduino 
      * 
@@ -138,11 +143,11 @@ public:
      * 
      * Returns : True, if command was received, and data was sent.
      */
-    bool checkPoll(float var1, String sendNewLine = "true");
+    bool processPushDataCommand(float var1, String sendNewLine = "true");
     
     /*
      * This function has to be called from the loop function.
-     * The CheckPoll function checks for data received on the uart
+     * The processPushDataCommand function checks for data received on the uart
      * and confirms with the bolt has sent the read command("RD\\r") 
      * to the Arduino 
      * 
@@ -160,11 +165,11 @@ public:
      * 
      * Returns : True, if command was received, and data was sent.
      */
-    bool checkPoll(float var1, float var2, String sendNewLine = "true");
+    bool processPushDataCommand(float var1, float var2, String sendNewLine = "true");
     
     /*
      * This function has to be called from the loop function.
-     * The CheckPoll function checks for data received on the uart
+     * The processPushDataCommand function checks for data received on the uart
      * and confirms with the bolt has sent the read command("RD\\r") 
      * to the Arduino 
      * 
@@ -183,11 +188,11 @@ public:
      * 
      * Returns : True, if command was received, and data was sent.
      */
-    bool checkPoll(float var1, float var2, float var3, String sendNewLine = "true");
+    bool processPushDataCommand(float var1, float var2, float var3, String sendNewLine = "true");
     
     /*
      * This function has to be called from the loop function.
-     * The CheckPoll function checks for data received on the uart
+     * The processPushDataCommand function checks for data received on the uart
      * and confirms with the bolt has sent the read command("RD\\r") 
      * to the Arduino 
      * 
@@ -207,11 +212,11 @@ public:
      * 
      * Returns : True, if command was received, and data was sent.
      */
-    bool checkPoll(float var1, float var2, float var3, float var4, String sendNewLine = "true");
+    bool processPushDataCommand(float var1, float var2, float var3, float var4, String sendNewLine = "true");
     
     /*
      * This function has to be called from the loop function.
-     * The CheckPoll function checks for data received on the uart
+     * The processPushDataCommand function checks for data received on the uart
      * and confirms with the bolt has sent the read command("RD\\r") 
      * to the Arduino 
      * 
@@ -232,11 +237,11 @@ public:
      * 
      * Returns : True, if command was received, and data was sent.
      */
-    bool checkPoll(float var1, float var2, float var3, float var4, float var5, String sendNewLine = "true");
+    bool processPushDataCommand(float var1, float var2, float var3, float var4, float var5, String sendNewLine = "true");
     
     /*
      * This function has to be called from the loop function.
-     * The CheckPoll function checks for data received on the uart
+     * The processPushDataCommand function checks for data received on the uart
      * and confirms with the bolt has sent the read command("RD\\r") 
      * to the Arduino 
      * 
@@ -254,14 +259,18 @@ public:
      * 
      * Returns : True, if command was received, and data was sent.
      */
-    bool checkPoll(float var1, float var2, float var3, float var4, float var5, float var6);
+    bool processPushDataCommand(float var1, float var2, float var3, float var4, float var5, float var6);
 
 
     /* 
-     * This function iterates through the whole list of commands vs command functions and calls the command function depending on the command received.
+     * This function iterates through the whole list of commands
+     * and calls the command function depending on the commands received.
+     * 
+     * Returns : Number of commands executed.
+     * 
      */
 
-    void handleCommand();
+    int handleCommand();
 
     /* 
      * This function returns the data that has been received over uart,
