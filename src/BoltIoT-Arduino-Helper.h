@@ -72,10 +72,13 @@ class BoltIoT {
      * can only be used after the first variable in the CSV string is sent.
      * 
      * Arguments:
+     * isFirstVar - This tells the function whether the variable is the first,
+     *              among the CSV string. If true, the function will not print 
+     *              a ',' before the value.
      * var - The value to be send as a part of the CSV string.
      * sendNewLine - Whether to send a new line after sending the variable.
      */
-    void sendVar(float var,String sendNewLine);
+    void sendVar(bool isFirstVar,float var,String sendNewLine);
 public:
 
     BoltIoT();

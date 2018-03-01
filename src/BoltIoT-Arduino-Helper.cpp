@@ -5,98 +5,98 @@
 BoltIoT boltiot;
 
 BoltIoT::BoltIoT() {
-    this->commandList = NULL;
+    this->commandList = NULL;// Initialize the list of commands to be null
 }
 
 void BoltIoT::Begin(HardwareSerial& uart){
-    this->begin(uart);
+    this->begin(uart);// Use non deprecated function with the same internal working.
 }
 
 void BoltIoT::Begin(int Rx_Pin, int Tx_Pin){
-    this->begin(Rx_Pin,Tx_Pin);
+    this->begin(Rx_Pin,Tx_Pin);// Use non deprecated function with the same internal working
 }
 
 void BoltIoT::begin(HardwareSerial& uart) {
-    this->communicationPort = &uart;
-    uart.begin(9600);
+    this->communicationPort = &uart; //Set hardware serial as the default communication port
+    ((HardwareSerial*)this->communicationPort)->begin(9600);  //Set the baud rate of the communication port to 9600
 }
 
 void BoltIoT::begin(int Rx_Pin, int Tx_Pin) {
-    this->communicationPort = new SoftwareSerial(Rx_Pin, Tx_Pin);
-    ((SoftwareSerial*)this->communicationPort)->begin(9600);
-    ((SoftwareSerial*)this->communicationPort)->listen();
+    this->communicationPort = new SoftwareSerial(Rx_Pin, Tx_Pin); //Initialize a new software serial port as the communication port.
+    ((SoftwareSerial*)this->communicationPort)->begin(9600);      //Set the baud rate of the communication port to 9600.
+    ((SoftwareSerial*)this->communicationPort)->listen();         //Enable the communication port to listen on incoming data.
 }
 
-void BoltIoT::sendVar(float var, String sendNewLine){
-    this->communicationPort->print(","+String(var));
-    if(sendNewLine.equals("true")){
-        this->communicationPort->print("\n");
+void BoltIoT::sendVar(bool isFirstVar,float var, String isLastVar){
+    if(!isFirstVar){//Check if the variable is the first in the CSV string.
+        this->communicationPort->print(","); //If not send a ','
+    }
+    this->communicationPort->print(String(var));    // Send the variable
+    if(isLastVar.equals("true")){//Check if this is the last variable to be sent.
+        this->communicationPort->print("\n"); //If so then send a newline along with 
     }
 }
 
-bool BoltIoT::checkPoll(float var1, String sendNewLine) {
-    int length;
-    if (this->communicationPort->available() > 0) {
-        char data = this->communicationPort->read();
-        this->receivedString += data;
-        if (this->receivedString.equals("RD\r")) {
-            this->communicationPort->print(String(var1));
-            if (sendNewLine.equals("true")) {
-                this->communicationPort->print("\n");
-            }
-            return true;
+bool BoltIoT::processPushDataCommand(float var1, String isLastVar) {
+    while (this->communicationPort->available() > 0) { //Check if new data is available 
+        char data = this->communicationPort->read(); //Read a single character from the communication port
+        this->receivedString += data;//Append the character received with the received string.
+        if (this->receivedString.endsWith("RD\r")) {//Check if RD\r has been received just now.
+            this->sendVar(true, var1, isLastVar); //If so then send the first variable out.
+            this->receivedString=""; //Set the received string to "", so that it does not interfere with new incoming commands.
+            return true;//Return true to indicate that data has been sent.
         }
         return false;
     }
 }
 
-bool BoltIoT::checkPoll(float var1, float var2, String sendNewLine) {
-    bool sendPushData = this->checkPoll(var1, "false");
+bool BoltIoT::processPushDataCommand(float var1, float var2, String isLastVar) {
+    bool sendPushData = this->processPushDataCommand(var1, "false");
     if (sendPushData) {
-        this->sendVar(var2, sendNewLine);
+        this->sendVar(false, var2, isLastVar);
         return true;
     }
     return false;
 }
 
-bool BoltIoT::checkPoll(float var1, float var2, float var3, String sendNewLine) {
-    bool sendPushData = this->checkPoll(var1, var2, "false");
+bool BoltIoT::processPushDataCommand(float var1, float var2, float var3, String isLastVar) {
+    bool sendPushData = this->processPushDataCommand(var1, var2, "false");
     if (sendPushData) {
-        this->sendVar(var3, sendNewLine);
+        this->sendVar(false, var3, isLastVar);
         return true;
     }
     return false;
 }
 
-bool BoltIoT::checkPoll(float var1, float var2, float var3, float var4, String sendNewLine) {
-    bool sendPushData = this->checkPoll(var1, var2, var3, "false");
+bool BoltIoT::processPushDataCommand(float var1, float var2, float var3, float var4, String isLastVar) {
+    bool sendPushData = this->processPushDataCommand(var1, var2, var3, "false");
     if (sendPushData) {
-        this->sendVar(var4, sendNewLine);
+        this->sendVar(false, var4, isLastVar);
         return true;
     }
     return false;
 }
 
-bool BoltIoT::checkPoll(float var1, float var2, float var3, float var4, float var5, String sendNewLine) {
-    bool sendPushData = this->checkPoll(var1, var2, var3, var4, "false");
+bool BoltIoT::processPushDataCommand(float var1, float var2, float var3, float var4, float var5, String isLastVar) {
+    bool sendPushData = this->processPushDataCommand(var1, var2, var3, var4, "false");
     if (sendPushData) {
-        this->sendVar(var5, sendNewLine);
+        this->sendVar(false, var5, isLastVar);
         return true;
     }
     return false;
 }
 
-bool BoltIoT::checkPoll(float var1, float var2, float var3, float var4, float var5, float var6) {
-    bool sendPushData = this->checkPoll(var1, var2, var3, var4, var5, "false");
+bool BoltIoT::processPushDataCommand(float var1, float var2, float var3, float var4, float var5, float var6) {
+    bool sendPushData = this->processPushDataCommand(var1, var2, var3, var4, var5, "false");
     if (sendPushData) {
-        this->sendVar(var6, "true");
+        this->sendVar(false, var6, "true");
         return true;
     }
     return false;
 }
 
-void BoltIoT::CheckPoll(float var1, float var2, float var3, float var4, float var5, float var6) {
-    this->CheckPoll(var1, var2, var3, var4, var5, var6);
+void BoltIoT::processPushDataCommand(float var1, float var2, float var3, float var4, float var5, float var6) {
+    this->processPushDataCommand(var1, var2, var3, var4, var5, var6);
 }
 
 String BoltIoT::getReceivedString() {
@@ -135,7 +135,7 @@ void BoltIoT::setCommandString(String command, String(*commandCallback)(String*)
 
 void BoltIoT::handleCommand() {
     /*
-     * This function replaces checkpoll. and should be called periodically.
+     * This function replaces processPushDataCommand. and should be called periodically.
      */
     CommandList *tempararyPointer;
 
@@ -172,11 +172,7 @@ void BoltIoT::handleCommand() {
 }
 
 bool BoltIoT::isCommandReceived(String command) {
-    int length = this->receivedString.length() - command.length();
-    if (length < 0) {
-        return false;
-    }
-    if (command.equals(this->receivedString.substring(length))) {
+    if (this->receivedString.endsWith(command)) {
         return true;
     }
     return false;

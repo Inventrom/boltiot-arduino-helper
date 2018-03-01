@@ -14,7 +14,7 @@ boltiot	KEYWORD1
 #######################################
 
 begin	KEYWORD2
-checkPoll	KEYWORD2
+processPushDataCommand	KEYWORD2
 getReceivedString	KEYWORD2
 setCommandString	KEYWORD2
 handleCommand	KEYWORD2
