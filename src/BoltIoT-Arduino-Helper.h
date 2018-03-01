@@ -315,5 +315,5 @@ public:
 };
 
 extern BoltIoT boltiot; //Variable defined in the header so that user does not have to define the variable
-#endif /* BOLT_H */
+#endif /* BOLTIOT_H */
 
