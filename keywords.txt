@@ -6,20 +6,19 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-BoltIoT	KEYWORD1
+BoltIoT KEYWORD1
 boltiot	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-Begin                   KEYWORD2
-CheckPoll               KEYWORD2
-GetCommandString        KEYWORD2
-SetCommandString        KEYWORD2
-HandleCommand           KEYWORD2
+begin	KEYWORD2
+checkPoll	KEYWORD2
+getReceivedString	KEYWORD2
+setCommandString	KEYWORD2
+handleCommand	KEYWORD2
 
 #######################################
-# Constants (LITERAL1)
+# Literals (LITERAL1)
 #######################################
-

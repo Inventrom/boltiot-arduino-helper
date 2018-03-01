@@ -2,7 +2,7 @@
 #include <BoltIoT-Arduino-Helper.h>
 
 
-String Return_Loggable_Data(String *data){
+String returnLoggableData(String *data){
 	String retval="";
 	retval=retval+analogRead(A0)+",";
 	retval=retval+analogRead(A1)+",";
@@ -14,7 +14,7 @@ String Return_Loggable_Data(String *data){
 }
 
 
-String Return_Extra_Monitoring_Data(String *data){
+String returnExtraMonitoringData(String *data){
 	String retval="";
 	retval=retval+digitalRead(2)+",";
 	retval=retval+digitalRead(3)+",";
@@ -24,18 +24,18 @@ String Return_Extra_Monitoring_Data(String *data){
 	return retval;	
 }
 
-String Run_PWM_Command(String *data){
-	int PWM_Channel=data[0].toInt();
-	int PWM_Value=data[1].toInt();
+String runPwmCommand(String *data){
+	int pwmChannel=data[0].toInt();
+	int pwmValue=data[1].toInt();
 }
 
 void setup(){
-	boltiot.Begin(Serial);
-	boltiot.SetCommandString("RD\r",Return_Loggable_Data);
-	boltiot.SetCommandString("GetData",Return_Extra_Monitoring_Data);
-	boltiot.SetCommandString("PWM",Run_PWM_Command,2);  //2 arguments are required, 1 is pwm channel and 2 is pwm value.
+	boltiot.begin(Serial);
+	boltiot.setCommandString("RD\r",returnLoggableData);
+	boltiot.setCommandString("GetData",returnExtraMonitoringData);
+	boltiot.setCommandString("PWM",runPwmCommand,2);  //2 arguments are required, 1 is pwm channel and 2 is pwm value.
 }
 
 void loop(){
-	boltiot.HandleCommand();
+	boltiot.handleCommand();
 }
