@@ -38,7 +38,7 @@ void BoltIoT::sendVar(bool isFirstVar,float var, String isLastVar){
 }
 
 bool BoltIoT::processPushDataCommand(float var1, String isLastVar) {
-    if (this->communicationPort->available() > 0) { //Check if new data is available 
+    while (this->communicationPort->available() > 0) { //Check if new data is available 
         char data = this->communicationPort->read(); //Read a single character from the communication port
         this->receivedString += data;//Append the character received with the received string.
         if (this->receivedString.endsWith("RD\r")) {//Check if RD\r has been received just now.
