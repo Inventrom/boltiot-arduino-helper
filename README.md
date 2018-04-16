@@ -12,6 +12,7 @@ Please follow the steps to include the bolt library to arduino
 5. Press ok and the library is loaded to your arduino ide.
 
 # Examples
+Remeber to go through the Examples packaged along with this library. They contain a better explaination of how to use the Command Response modle for this library.
 ## Interfacing via hardware serial port
 ```
 #include <BoltIoT-Arduino-Helper.h>
@@ -46,3 +47,4 @@ void loop() {
 /*This function needs to be called reglarly. Calling the processPushDataCommand function once every seconds is required*/
 }
 ```
+
