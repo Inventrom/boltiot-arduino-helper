@@ -46,8 +46,8 @@ bool BoltIoT::processPushDataCommand(float var1, String isLastVar) {
             this->receivedString=""; //Set the received string to "", so that it does not interfere with new incoming commands.
             return true;//Return true to indicate that data has been sent.
         }
-        return false;//Return false to indicate that data was not pushed.
     }
+    return false;//Return false to indicate that data was not pushed.
 }
 
 bool BoltIoT::processPushDataCommand(float var1, float var2, String isLastVar) {
