@@ -1,6 +1,12 @@
 
 #include <BoltIoT-Arduino-Helper.h>
 
+/*
+ * With this code the user will be able to use the SerialWrite API 
+ * to send commands to the Boltduino.
+ * The User will also be able to parse the response of the command 
+ * using the SerialRead API
+ */
 
 String getAnalogData(String *data){
 	String retval="";
