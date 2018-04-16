@@ -2,7 +2,7 @@
 #include <BoltIoT-Arduino-Helper.h>
 
 
-String returnLoggableData(String *data){
+String getAnalogData(String *data){
 	String retval="";
 	retval=retval+analogRead(A0)+",";
 	retval=retval+analogRead(A1)+",";
@@ -14,7 +14,7 @@ String returnLoggableData(String *data){
 }
 
 
-String returnExtraMonitoringData(String *data){
+String getDigitalData(String *data){
 	String retval="";
 	retval=retval+digitalRead(2)+",";
 	retval=retval+digitalRead(3)+",";
@@ -24,16 +24,25 @@ String returnExtraMonitoringData(String *data){
 	return retval;	
 }
 
+String setDigitalPin(String *data){
+  int pinNumber=data[0].toInt();
+  int pinState=data[1].toInt()>0?1:0;
+  return "Pin "+String(pinNumber)+" set to Digital value "+String(pinState);
+}
+
 String runPwmCommand(String *data){
 	int pwmChannel=data[0].toInt();
 	int pwmValue=data[1].toInt();
+  analogWrite(pwmChannel,pwmValue);
+  return "Pin "+String(pwmChannel)+" set to PWM value "+String(pwmValue);
 }
 
 void setup(){
 	boltiot.begin(Serial);
-	boltiot.setCommandString("RD\r",returnLoggableData);
-	boltiot.setCommandString("GetData",returnExtraMonitoringData);
-	boltiot.setCommandString("PWM",runPwmCommand,2);  //2 arguments are required, 1 is pwm channel and 2 is pwm value.
+	boltiot.setCommandString("GetAnalogData",getAnalogData);
+	boltiot.setCommandString("GetDigitalData",getDigitalData);
+  boltiot.setCommandString("SetDigitalPin",setDigitalPin,2);  //2 arguments are required, argument 1 is pin number and 2 is digital value. The command and argument should be seperted by a ' ' character, ' ' is the default. example SetDigitalPin 6 0 . 
+  boltiot.setCommandString("SetPWM",runPwmCommand,2,';');  //2 arguments are required, argument 1 is pwm channel and 2 is pwm value. The command and argument should be seperted by a ';' character. example SetPWM;6;200 
 }
 
 void loop(){
