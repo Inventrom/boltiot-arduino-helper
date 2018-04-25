@@ -33,6 +33,7 @@ String getDigitalData(String *data){
 String setDigitalPin(String *data){
   int pinNumber=data[0].toInt();
   int pinState=data[1].toInt()>0?1:0;
+  digitalWrite(pinNumber,pinState);
   return "Pin "+String(pinNumber)+" set to Digital value "+String(pinState);
 }
 
