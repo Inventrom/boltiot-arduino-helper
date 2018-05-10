@@ -49,7 +49,7 @@ void setup(){
 	boltiot.setCommandString("GetAnalogData",getAnalogData);
 	boltiot.setCommandString("GetDigitalData",getDigitalData);
   boltiot.setCommandString("SetDigitalPin",setDigitalPin,2);  //2 arguments are required, argument 1 is pin number and 2 is digital value. The command and argument should be seperted by a ' ' character, ' ' is the default. example SetDigitalPin 6 0 . 
-  boltiot.setCommandString("SetPWM",runPwmCommand,2,';');  //2 arguments are required, argument 1 is pwm channel and 2 is pwm value. The command and argument should be seperted by a ';' character. example SetPWM;6;200 
+  boltiot.setCommandString("SetPWM",runPwmCommand,2,'.');  //2 arguments are required, argument 1 is pwm channel and 2 is pwm value. The command and argument should be seperted by a '.' character. example SetPWM.6.200. . 
 }
 
 void loop(){
