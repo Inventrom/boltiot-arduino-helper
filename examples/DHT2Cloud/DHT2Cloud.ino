@@ -83,7 +83,7 @@ void setup(){
   NextMeasurementTime=millis()+delayMS;
   boltiot.setCommandString("RD\r",pushData);
   boltiot.setCommandString("GetData",pushData);
-  boltiot.setCommandString("GetSensorDetails",getSensorDetail,2,':');
+  boltiot.setCommandString("GetSensorDetails",getSensorDetail,2,'.'); //2 arguments are required. The command and argument should be seperted by a '.' character.
 }
 
 void loop(){
