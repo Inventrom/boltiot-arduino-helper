@@ -12,9 +12,10 @@ Please follow the steps to include the bolt library to arduino
 5. Press ok and the library is loaded to your arduino ide.
 
 # Examples
+Remeber to go through the Examples packaged along with this library. They contain a better explaination of how to use the Command Response modle for this library.
 ## Interfacing via hardware serial port
 ```
-#include <BoltIot-Arduino-Helper.h>
+#include <BoltIoT-Arduino-Helper.h>
 
 void setup() {
   boltiot.Begin(Serial); //Initialize the bolt interface over serial uart. Serial could be replaced with Serial0 or Serial1 on arduino mega boards.
@@ -24,15 +25,15 @@ void setup() {
 }
 
 void loop() {
-  boltiot.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
-/*This function needs to be called reglarly. Calling the CheckPoll function once every seconds is required*/
+  boltiot.processPushDataCommand(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
+/*This function needs to be called reglarly. Calling the processPushDataCommand function once every seconds is required*/
 }
 ```
 
 
 ## Interfacing via software serial port
 ```
-#include <BoltIot-Arduino-Helper.h>
+#include <BoltIoT-Arduino-Helper.h>
 
 void setup() {
   boltiot.Begin(3,4); //Initialize the bolt interface over software serial uart.
@@ -42,7 +43,8 @@ void setup() {
 }
 
 void loop() {
-  boltiot.CheckPoll(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
-/*This function needs to be called reglarly. Calling the CheckPoll function once every seconds is required*/
+  boltiot.processPushDataCommand(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
+/*This function needs to be called reglarly. Calling the processPushDataCommand function once every seconds is required*/
 }
 ```
+
