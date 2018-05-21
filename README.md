@@ -26,7 +26,7 @@ void setup() {
 
 void loop() {
   boltiot.processPushDataCommand(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
-/*This function needs to be called reglarly. Calling the processPushDataCommand function once every seconds is required*/
+/*This function needs to be called reglarly. Calling the processPushDataCommand function once every second is required*/
 }
 ```
 
@@ -44,7 +44,7 @@ void setup() {
 
 void loop() {
   boltiot.processPushDataCommand(digitalRead(2)); //Send data to the bolt cloud, when the bolt polls the arduino,for data.
-/*This function needs to be called reglarly. Calling the processPushDataCommand function once every seconds is required*/
+/*This function needs to be called reglarly. Calling the processPushDataCommand function once every second is required*/
 }
 ```
 
