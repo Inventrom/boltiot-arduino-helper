@@ -18,8 +18,12 @@
  * It will send the status of pin 2 to the Bolt, to be logged to the cloud.
  */
 
+#ifndef API_KEY
 #define API_KEY   "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#endif
+#ifndef DEVICE_ID
 #define DEVICE_ID "BOLTxxxxxxxx"
+#endif
 
 #define DHTPIN            2
 

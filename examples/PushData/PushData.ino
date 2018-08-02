@@ -7,9 +7,12 @@
  * when the Bolt sends the RD\r command
  */
 
-
+#ifndef API_KEY
 #define API_KEY   "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#endif
+#ifndef DEVICE_ID
 #define DEVICE_ID "BOLTxxxxxxxx"
+#endif
 
 void setup(){
 	boltiot.begin(Serial);
