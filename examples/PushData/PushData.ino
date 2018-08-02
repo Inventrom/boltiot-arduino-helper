@@ -8,6 +8,8 @@
  */
 
 
+#define API_KEY   "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#define DEVICE_ID "BOLTxxxxxxxx"
 
 void setup(){
 	boltiot.begin(Serial);

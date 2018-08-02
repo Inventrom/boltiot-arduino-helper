@@ -8,6 +8,9 @@
  * using the SerialRead API
  */
 
+#define API_KEY   "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#define DEVICE_ID "BOLTxxxxxxxx"
+
 String getAnalogData(String *data){
 	String retval="";
 	retval=retval+analogRead(A0)+",";

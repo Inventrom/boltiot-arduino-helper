@@ -12,6 +12,8 @@
  * It will send the status of pin 2 to the Bolt, to be logged to the cloud.
  */
 
+#define API_KEY   "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#define DEVICE_ID "BOLTxxxxxxxx"
 
 String pushData(String *data){
   return ""+digitalRead(2);
