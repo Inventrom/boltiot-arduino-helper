@@ -8,13 +8,13 @@ Please follow the steps to include the bolt library to arduino
 1. Click on clone or download button and download the zip
 2. Open Arduino IDE.
 3. Click on Sketch->Add Library->Add .Zip library.
-4. Navigate to the folder where boltiot-arduino-helper.zip was downloaded, and select boltiot-arduino-helper.zip.
+4. Navigate to the folder where boltiot-arduino-helper-master.zip was downloaded, and select boltiot-arduino-helper-master.zip.
 5. Press ok and the library is loaded to your arduino ide.
 
 # (Optional) Defining global API key and device id (Details of why this is needed will be added later)
 While it is a good idea to define the API key and device id as a part of the code, it is sometimes troublesome to write the corresponding code everytime you have a new project.
 You can define a global API key or device id, by using the following steps.
-1. Go to the 'libraries/BoltIoT-Arduino-Helper/src' folder inside your sketchbook folder. The sketchbook folder is normally 'My Documents/Arduino' folder for windows and "~/Documents/Arudino/" folder in Mac and linux. 
+1. Go to the 'libraries/boltiot-arduino-helper-master/src' folder inside your sketchbook folder. The sketchbook folder is normally 'My Documents/Arduino' folder for windows and "~/Documents/Arudino/" folder in Mac and linux. 
 2. Open the file 'BoltDeviceCredentials.h' file in a text editor.
 3. Uncomment API_KEY or DEVICE_ID or both macros, whichever you want to make common across all examples.
 4. Replace the dummy values with actual value for the corresponding macro.
