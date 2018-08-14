@@ -7,6 +7,12 @@
  * The User will also be able to parse the response of the command 
  * using the SerialRead API
  */
+#ifndef API_KEY
+#define API_KEY   "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#endif
+#ifndef DEVICE_ID
+#define DEVICE_ID "BOLTxxxxxxxx"
+#endif
 
 String getAnalogData(String *data){
 	String retval="";

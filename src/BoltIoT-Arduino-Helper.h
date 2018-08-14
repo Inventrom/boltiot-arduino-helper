@@ -1,7 +1,7 @@
-/* Provided by Inventrom for interfacing bolt to Arduino */
+/* Provided by Inventrom for interfacing Bolt to Arduino */
 
 /* 
- * File:   Bolt.h
+ * File:   BoltIoT-Arduino-Helper.h
  * Author: Inventrom
  *
  * Created on 1 September, 2017, 8:00 AM
@@ -12,6 +12,7 @@
 #include <Stream.h>
 #include <HardwareSerial.h>
 #include <SoftwareSerial.h>
+#include <BoltDeviceCredentials.h>
 
 /* This structure holds all the commands set by the user.
  */
