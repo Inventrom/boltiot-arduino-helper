@@ -23,7 +23,7 @@ You can define a global API key or device id, by using the following steps.
 You are done.
 Now all you have to is include the ```BoltDeviceCredentials.h``` header into any code where the macro are required.
 You can do this by including hte following line at the top of your code.
-```
+```cpp
 #include <BoltDeviceCredentials.h>
 ```
 
@@ -32,7 +32,7 @@ Please Note: You can always overwrite the global value by defining the API_KEY a
 # Examples
 Remeber to go through the Examples packaged along with this library. They contain a better explaination of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
-```
+```cpp
 #include <BoltIoT-Arduino-Helper.h>
 
 void setup() {
@@ -50,7 +50,7 @@ void loop() {
 
 
 ## Interfacing via software serial port
-```
+```cpp
 #include <BoltIoT-Arduino-Helper.h>
 
 void setup() {
