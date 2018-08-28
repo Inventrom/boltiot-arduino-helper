@@ -90,7 +90,7 @@ For example, if you want the Arduino to send analog values of all analog input p
 boltiot.setCommandString("GetAnalogData",getAnalogData);
 ```
 
-and define the following command separately outside the setup function.
+and define the following command function separately outside the setup function.
 ```cpp
 String getAnalogData(String *data){
 	String retval="";
@@ -116,6 +116,13 @@ https://cloud.boltiot.com/remote/{API_KEY}/serialRead?deviceName={DEVICE_ID}
 To learn more about the SerialRead API call click [here](https://docs.boltiot.com/docs/read-incoming-serial-data) and SerialWrite API call click [here](https://docs.boltiot.com/docs/send-serial-data-output).
 
 To learn more about this function read the example given in File>Examples>BoltIoT-Arduino-Helper>CommandHandler in your Arduino IDE.
+
+Please Note: To have the functions called when the corresponding command is received from the Bolt, you need to call the handleCommand function in the loop function at the least once every second.
+
+### Things to remember while defining the command function
+While the library allow you to use and function as a command function with the setCommandString function allow you to successfully compile the code, the code **will not function properly** if the following rules are not follow.
+
+
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
