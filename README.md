@@ -21,8 +21,8 @@ You can define a global API key or device id, by using the following steps.
 5. Save and close the file.
 
 You are done.
-Now all you have to is include the ```BoltDeviceCredentials.h``` header into any code where the macro are required.
-You can do this by including hte following line at the top of your code.
+Now all you have to do is include the ```BoltDeviceCredentials.h``` header into any code where the macro are required.
+You can do this by including the following line at the top of your code.
 ```cpp
 #include <BoltDeviceCredentials.h>
 ```
@@ -30,13 +30,13 @@ You can do this by including hte following line at the top of your code.
 Please Note: You can always overwrite the global value by defining the API_KEY and DEVICE_ID macro within your code. The definitions in the examples will only take effect, if the corresponding definitions are not already done in the 'BoltDeviceCredentials.h' header file.
 
 # Examples
-Remeber to go through the Examples packaged along with this library. They contain a better explaination of how to use the Command Response model for this library.
+Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
 ```cpp
 #include <BoltIoT-Arduino-Helper.h>
 
 void setup() {
-  boltiot.begin(Serial); //Initialize the bolt interface over serial uart. Serial could be replaced with Serial0 or Serial1 on arduino mega boards.
+  boltiot.begin(Serial); //Initialize the bolt interface over serial uart. Serial could be replaced with Serial0 or Serial1 on Arduino mega boards.
 		   //In this example Tx pin of bolt is connected to rx pin of arduino Serial Port
 		   //and rx pin of bolt is connected to tx pin of arduino Serial Port
   pinMode(2,INPUT); //Set pin 2 as the input. We will use send this pin's state as the data to the bolt cloud
