@@ -84,7 +84,7 @@ To learn more about this function read the example given in File>Examples>BoltIo
 ## setCommandString
 If you want to use the Bolt Cloud to send commands to the Arduino, or you want to use the Arduino along with the Bolt and the Bolt Cloud to send custom data to your own Cloud, you need to use this function.
 
-This function allows you to tell the library, to execute a specific function when the Arduino receives a specific command from the Bolt.
+This function allows you to tell the library, to execute a specific command function when the Arduino receives a specific command from the Bolt. The setCommandString function, stores the command function along with the associated command string in a list within the library.
 For example, if you want the Arduino to send analog values of all analog input pins, when the Bolt sends the command "getAnalogData" via the serial interface, you will use the following code, in your setup function.
 ```cpp
 boltiot.setCommandString("GetAnalogData",getAnalogData);
@@ -123,6 +123,16 @@ Please Note: To have the functions called when the corresponding command is rece
 While the library allow you to use and function as a command function with the setCommandString function allow you to successfully compile the code, the code **will not function properly** if the following rules are not follow.
  * The command function **should only return a string**.
  * The command function should take a string pinter as input.
+
+## handleCommand
+The handleCommand function is equivalent to the processPushDataCommand funciton. If the setCommand function is used in the setup function, then this function has to be called at the least once every second via the loop function.
+This function checks for new data from the serial interface, compares it to the command strings in the list within the library. If the received command matches a command string, the associated command function is executed.
+The function returns the number of commands executed, every time it is called.
+
+You can call this funciton in the loop function of the Arduino code, in the following manner.
+```cpp
+boltiot.handleCommand();
+```
 
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
