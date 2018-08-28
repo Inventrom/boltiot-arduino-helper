@@ -32,7 +32,12 @@ Please Note: You can always overwrite the global value by defining the API_KEY a
 #define API_KEY     "xxxxxx-xxxx-xxxx-xxxx-xxxxxx"
 #define DEVICE_ID   "BOLTxxxxxxxx"
 ```
+
 Please Note: The definitions in the examples will only take effect, if the corresponding definitions are not already done in the 'BoltDeviceCredentials.h' header file.
+#Available functions
+##begin
+This function helps initialize the boltiot variable with a UART communications interface. The communication interface can be hardware serial interface, or a software serial interface.
+You can read more about hardware serial interface by clicking [here](https://www.arduino.cc/reference/en/language/functions/communication/serial/), and software serial interface by clicking [here](https://www.arduino.cc/en/Reference/SoftwareSerial).
 
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
