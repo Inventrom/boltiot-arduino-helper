@@ -5,7 +5,7 @@ By using this library, any data collected or processed by the Arduino can be sen
 
 # Installation steps
 Please follow the steps to include the bolt library to arduino
-1. Click on clone or download button and download the zip
+1. Click [here](https://github.com/Vinayakj009/boltiot-arduino-helper/archive/master.zip) to download the zip
 2. Open Arduino IDE.
 3. Click on ```Sketch->Include Library->Add .Zip library```.
 4. Navigate to the folder where boltiot-arduino-helper-master.zip was downloaded, and select boltiot-arduino-helper-master.zip.
