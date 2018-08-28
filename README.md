@@ -48,8 +48,37 @@ To use a software serial interface with the Bolt unit, use the following code sn
 ```cpp
 boltiot.begin(3,4);
 ```
-
 The begin function initializes the serial interface (hardware or software) to communicate at a baud rate of 9600, which is most commonly used with the Bolt.
+
+## processPushDataCommand
+This function monitors the serial interface for the "RD\r" command, sent by the Bolt unit, and responds to the Bolt via the serial interface, with the data supplied to the function.<br>
+Use this function if you the only function that the Arduino will do, is log data to log data to the Bolt Cloud.<br>
+
+This function requires a minimum of 1 argument, and can take upto 6 arguments. These arguments can be of the type int or float. The following examples are valid ways to use this function.
+```cpp
+boltiot.processPushDataCommand(2);
+```
+
+```cpp
+int i=20;
+boltiot.processPushDataCommand(i);
+```
+
+```cpp
+int i=20;
+float j=20.6;
+boltiot.processPushDataCommand(i,j);
+```
+
+```cpp
+int i[3]={20,24,26};
+float j[3]={20.6,-10.5,30.4};
+boltiot.processPushDataCommand(i[0],j[2],j[1],i[2],i[1],j[0]);
+```
+This function has to be called at the least once per second for it to work properly. Use this function in the loop function of your Arduino code.
+
+The function return a 'true' when it receives the "RD\r" command from the Bolt, and false when it does not receive the "RD\r" command from the Bolt.
+
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
