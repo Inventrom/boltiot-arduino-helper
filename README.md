@@ -79,6 +79,43 @@ This function has to be called at the least once per second for it to work prope
 
 The function return a 'true' when it receives the "RD\r" command from the Bolt, and false when it does not receive the "RD\r" command from the Bolt.
 
+To learn more about this function read the example given in File>Examples>BoltIoT-Arduino-Helper>PushData in your Arduino IDE.
+
+## setCommandString
+If you want to use the Bolt Cloud to send commands to the Arduino, or you want to use the Arduino along with the Bolt and the Bolt Cloud to send custom data to your own Cloud, you need to use this function.
+
+This function allows you to tell the library, to execute a specific function when the Arduino receives a specific command from the Bolt.
+For example, if you want the Arduino to send analog values of all analog input pins, when the Bolt sends the command "getAnalogData" via the serial interface, you will use the following code, in your setup function.
+```cpp
+boltiot.setCommandString("GetAnalogData",getAnalogData);
+```
+
+and define the following command separately outside the setup function.
+```cpp
+String getAnalogData(String *data){
+	String retval="";
+	retval=retval+analogRead(A0)+",";
+	retval=retval+analogRead(A1)+",";
+	retval=retval+analogRead(A2)+",";
+	retval=retval+analogRead(A3)+",";
+	retval=retval+analogRead(A4)+",";
+	retval=retval+analogRead(A5);
+	return retval;
+}
+```
+
+To get the analog data, you will have to run the SerialWrite API call from the Bolt Cloud with the data "getAnalogData" and then run the SerialRead API call from the Bolt Cloud to fetch the data sent by the Arduino.
+For example you will have to run the following link via the Web Browser, to send the command to the Arduino via the serial interface of the Bolt.
+```
+https://cloud.boltiot.com/remote/{API_KEY}/serialWrite?data=getAnalogData&deviceName={DEVICE_ID}
+```
+and then run the following link via the Web Browser, to read the data sent by the Arduino via the serial interface to the Bolt unit.
+```
+https://cloud.boltiot.com/remote/{API_KEY}/serialRead?deviceName={DEVICE_ID}
+```
+To learn more about the SerialRead API call click [here](https://docs.boltiot.com/docs/read-incoming-serial-data) and SerialWrite API call click [here](https://docs.boltiot.com/docs/send-serial-data-output).
+
+To learn more about this function read the example given in File>Examples>BoltIoT-Arduino-Helper>CommandHandler in your Arduino IDE.
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
