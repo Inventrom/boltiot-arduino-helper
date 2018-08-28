@@ -121,7 +121,8 @@ Please Note: To have the functions called when the corresponding command is rece
 
 ### Things to remember while defining the command function
 While the library allow you to use and function as a command function with the setCommandString function allow you to successfully compile the code, the code **will not function properly** if the following rules are not follow.
-
+ * The command function **should only return a string**.
+ * The command function should take a string pinter as input.
 
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
