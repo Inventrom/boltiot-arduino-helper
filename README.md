@@ -39,6 +39,10 @@ Please Note: The definitions in the examples will only take effect, if the corre
 This function helps initialize the boltiot variable with a UART communications interface. The communication interface can be hardware serial interface, or a software serial interface.
 You can read more about hardware serial interface by clicking [here](https://www.arduino.cc/reference/en/language/functions/communication/serial/), and software serial interface by clicking [here](https://www.arduino.cc/en/Reference/SoftwareSerial).
 
+To use a hardware serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the code snippet, we are using 'Serial' as the hardware serial interface. This interface is available on most Arduino board. Some boards such as the Arduino mega also have Serial0 and Serial1 as hardware serial interfaces.
+```cpp
+boltiot.begin(Serial);
+```
 # Examples
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
