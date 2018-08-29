@@ -27,7 +27,7 @@ You can do this by including the following line at the top of your code.
 #include <BoltDeviceCredentials.h>
 ```
 
-Please Note: You can always overwrite the global value by defining the API_KEY and DEVICE_ID macro within your code. This can be done by adding the code snipped below in your code and accordingly updating the values.
+Please Note: You can always overwrite the global value by defining the API_KEY and DEVICE_ID macro within your code. This can be done by adding the code snippet below in your code and accordingly updating the values.
 ```cpp
 #define API_KEY     "xxxxxx-xxxx-xxxx-xxxx-xxxxxx"
 #define DEVICE_ID   "BOLTxxxxxxxx"
@@ -142,7 +142,7 @@ Remember to go through the Examples packaged along with this library. They conta
 
 void setup() {
   boltiot.begin(Serial); //Initialize the Bolt interface over serial UART. Serial could be replaced with Serial0 or Serial1 on Arduino mega boards.
-		   //In this example TX pin of Bolt is connected to the RX pin of Arduino Serial Port
+		   //In this example, the TX pin of Bolt is connected to the RX pin of Arduino Serial Port
 		   //and the TX pin of Bolt is connected to the TX pin of Arduino Serial Port
   pinMode(2,INPUT); //Set pin 2 as the input. We will use send this pin's state as the data to the Bolt cloud
 }
@@ -160,7 +160,7 @@ void loop() {
 
 void setup() {
   boltiot.begin(3,4); //Initialize the Bolt interface over software serial UART.
-		   //In this example the TX pin of Bolt is connected to pin 3 of Arduino
+		   //In this example, the TX pin of Bolt is connected to pin 3 of Arduino
 		   //and the RX pin of Bolt is connected to pin 4 of Arduino
   pinMode(2,INPUT); //Set pin 2 as the input. We will use send this pin's state as the data to the Bolt cloud
 }
