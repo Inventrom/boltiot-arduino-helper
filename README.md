@@ -33,7 +33,7 @@ Please Note: You can always overwrite the global value by defining the API_KEY a
 #define DEVICE_ID   "BOLTxxxxxxxx"
 ```
 
-Please Note: The definitions in the examples will only take effect, if the corresponding definitions are not already done in the 'BoltDeviceCredentials.h' header file.
+Please Note: The definitions in the examples will only take effect, if the corresponding definitions are not already done in the ```BoltDeviceCredentials.h``` header file.
 # Available functions
 ## begin
 This function helps initialize the boltiot variable with a UART communications interface. The communication interface can be hardware serial interface, or a software serial interface.
