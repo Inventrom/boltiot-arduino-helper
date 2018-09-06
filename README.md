@@ -45,8 +45,7 @@ also have Serial0 and Serial1 as hardware serial interfaces. Pin connections wit
 boltiot.begin(Serial);
 ```
 
-To use a software serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the following example, you will need to connect 
-pin of the Bolt to pin 3 of the Arduino, and RX pin of the Bolt to pin 4 of the Arduino. You can choose which pins to connect to the TX and RX pins of the Bolt, and accordingly replace the pin number in the code below.
+To use a software serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the following example, you will need to connect TX pin of the Bolt to pin 3 of the Arduino, and RX pin of the Bolt to pin 4 of the Arduino. You can choose which pins to connect to the TX and RX pins of the Bolt, and accordingly replace the pin number in the code below.
 ```cpp
 boltiot.begin(3,4);
 ```
@@ -58,7 +57,7 @@ Use this function if the only function that the Arduino will do, is log data to 
 
 This function requires a minimum of 1 argument and can take up to 6 arguments. These arguments can be of the type int or float. The following examples are valid ways to use this function.
 The number of arguments you pass, corresponds to the number of different sensor data you want to log to the Cloud.<br>
-Please Note: The number of arguments you pass to this function should be the same as the number of CSV values you configure for the corresponding UART product on the Bolt Cloud.
+Please Note: The number of arguments you pass to this function should be the same as the number of CSV values you configure for the corresponding UART product on the Bolt Cloud. If this number is not the same, the Bolt Cloud will ***not*** process the data pushed by the Arduino.
 ```cpp
 boltiot.processPushDataCommand(2);
 ```
