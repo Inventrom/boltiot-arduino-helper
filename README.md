@@ -88,7 +88,7 @@ To learn more about this function read the example given in File>Examples>BoltIo
 ## setCommandString
 If you want to use the Bolt Cloud to send commands to the Arduino, or you want to use the Arduino along with the Bolt and the Bolt Cloud to send custom data to your own Cloud, you need to use this function.
 
-This function allows you to tell the library, to execute a specific command function when the Arduino receives a specific command from the Bolt. The setCommandString function stores the command function along with the associated command string in a list within the library.
+This function allows you to tell the library, to execute a specific command function when the Arduino receives a specific command from the Bolt. The setCommandString function stores the command function along with the associated command string within the library.
 For example, if you want the Arduino to send analog values of all analog input pins when the Bolt sends the command "getAnalogData" via the serial interface, you will use the following code, in your setup function.
 ```cpp
 boltiot.setCommandString("GetAnalogData",getAnalogData);
