@@ -141,7 +141,7 @@ Here is a code snippet you can use in your code. Remember to change the function
 
 ## handleCommand
 ***Only use this function if you have already used the setCommandString function***<br>
-***This funciton has to be called once every second for it to function properly***
+***This funciton has to be called once every second for it to function properly***<br>
 The handleCommand function is equivalent to the processPushDataCommand function.<br>
 This function checks for new data from the serial interface compares it to the command strings within the library. If the received command matches a command string, the associated command function is executed.<br>
 The function returns the number of commands executed, every time it is called.<br>
