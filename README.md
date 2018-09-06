@@ -39,12 +39,14 @@ Please Note: The definitions in the examples will only take effect, if the corre
 This function helps to initialize the boltiot variable with a UART communications interface. The communication interface can be a hardware serial interface or a software serial interface.
 You can read more about hardware serial interface by clicking [here](https://www.arduino.cc/reference/en/language/functions/communication/serial/), and software serial interface by clicking [here](https://www.arduino.cc/en/Reference/SoftwareSerial).
 
-To use a hardware serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the code snippet, we are using 'Serial' as the hardware serial interface. This interface is available on most Arduino board. To use this hardware serial interface, connect the TX pin of the Bolt to the TX pin of your Arduino, and the RX pin of the Bolt to the RX pin of your Arduino. Some boards such as the Arduino mega also have Serial0 and Serial1 as hardware serial interfaces. Pin connections with the Bolt differ based on the hardware serial interface used.
+To use a hardware serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the code snippet, we are using 'Serial' as the hardware serial interface. This interface is available on most Arduino boards. To use this hardware serial interface, connect the TX pin of the Bolt to the RX pin of your Arduino, and the RX pin of the Bolt to the TX pin of your Arduino. Some boards such as the Arduino 
+also have Serial0 and Serial1 as hardware serial interfaces. Pin connections with the Bolt differ based on the hardware serial interface used.
 ```cpp
 boltiot.begin(Serial);
 ```
 
-To use a software serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the following example, you will need to connect TX pin of the Bolt to pin 3 of the Arduino, and RX pin of the Bolt to pin 4 of the Arduino. You can choose which pins to connect to the TX and RX pins of the Bolt, and accordingly replace the pin number in the code below.
+To use a software serial interface with the Bolt unit, use the following code snippet in the setup function of your Arduino code. In the following example, you will need to connect 
+pin of the Bolt to pin 3 of the Arduino, and RX pin of the Bolt to pin 4 of the Arduino. You can choose which pins to connect to the TX and RX pins of the Bolt, and accordingly replace the pin number in the code below.
 ```cpp
 boltiot.begin(3,4);
 ```
@@ -52,28 +54,30 @@ The begin function initializes the serial interface (hardware or software) to co
 
 ## processPushDataCommand
 This function monitors the serial interface for the "RD\r" command, sent by the Bolt unit, and responds to the Bolt via the serial interface, with the data supplied to the function.<br>
-Use this function if you the only function that the Arduino will do, is log data to log data to the Bolt Cloud.<br>
+Use this function if the only function that the Arduino will do, is log data to the Bolt Cloud.<br>
 
 This function requires a minimum of 1 argument and can take up to 6 arguments. These arguments can be of the type int or float. The following examples are valid ways to use this function.
+The number of arguments you pass, corresponds to the number of different sensor data you want to log to the Cloud.
+
 ```cpp
 boltiot.processPushDataCommand(2);
 ```
 
 ```cpp
-int i=20;
-boltiot.processPushDataCommand(i);
+int sensorData=20;
+boltiot.processPushDataCommand(sensorData);
 ```
 
 ```cpp
-int i=20;
-float j=20.6;
-boltiot.processPushDataCommand(i,j);
+int sensorData1=20;
+float sensorData2=20.6;
+boltiot.processPushDataCommand(sensorData1,sensorData2);
 ```
 
 ```cpp
-int i[3]={20,24,26};
-float j[3]={20.6,-10.5,30.4};
-boltiot.processPushDataCommand(i[0],j[2],j[1],i[2],i[1],j[0]);
+int integerSensorData[3]={20,24,26};
+float floatSensorData[3]={20.6,-10.5,30.4};
+boltiot.processPushDataCommand(integerSensorData[0],floatSensorData[2],floatSensorData[1],integerSensorData[2],integerSensorData[1],floatSensorData[0]);
 ```
 This function has to be called at the least once per second for it to work properly. Use this function in the loop function of your Arduino code.
 
@@ -141,7 +145,7 @@ Remember to go through the Examples packaged along with this library. They conta
 #include <BoltIoT-Arduino-Helper.h>
 
 void setup() {
-  boltiot.begin(Serial); //Initialize the Bolt interface over serial UART. Serial could be replaced with Serial0 or Serial1 on Arduino mega boards.
+  boltiot.begin(Serial); //Initialize the Bolt interface over serial UART. Serial could be replaced with Serial0 or Serial1 on Arduino Mega boards.
 		   //In this example, the TX pin of Bolt is connected to the RX pin of Arduino Serial Port
 		   //and the TX pin of Bolt is connected to the TX pin of Arduino Serial Port
   pinMode(2,INPUT); //Set pin 2 as the input. We will use send this pin's state as the data to the Bolt cloud
