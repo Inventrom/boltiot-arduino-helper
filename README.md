@@ -123,10 +123,20 @@ To learn more about this function read the example given in File>Examples>BoltIo
 
 Please Note: To have the functions called when the corresponding command is received from the Bolt, you need to call the handleCommand function in the loop function at the least once every second.
 
-### Things to remember while defining the command function
+### Things to remember while defining your own custom command function
 While the library allows you to use and function as a command function with the setCommandString function allow you to successfully compile the code, the code **will not function properly** if the following rules are not followed.
  * The command function **should only return a string**.
  * The command function should take a string pointer as input.
+ 
+Here is a code snippet you can use in your code. Remember to change the function name "ExampleCustomCommandFunction" to the function name you want to use, and write the custom command code in the indicated area.
+
+ ```cpp
+ String ExampleCustomCommandFunction(String *data){
+ 	String returnString="";
+	//Write your custom command code here.
+	return returnString;
+ }
+ ```
 
 ## handleCommand
 The handleCommand function is equivalent to the processPushDataCommand function. If the setCommand function is used in the setup function, then this function has to be called at the least once every second via the loop function.
