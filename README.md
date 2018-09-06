@@ -58,7 +58,7 @@ Use this function if the only function that the Arduino will do, is log data to 
 
 This function requires a minimum of 1 argument and can take up to 6 arguments. These arguments can be of the type int or float. The following examples are valid ways to use this function.
 The number of arguments you pass, corresponds to the number of different sensor data you want to log to the Cloud.
-
+Please Note: The number of arguments you pass to this function should be the same as the number of CSV values you configure for the corresponding UART product on the Bolt Cloud.
 ```cpp
 boltiot.processPushDataCommand(2);
 ```
