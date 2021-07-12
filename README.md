@@ -4,17 +4,17 @@ The library supports hardware as well as software serial UARTs, as such the Bolt
 By using this library, any data collected or processed by the Arduino can be sent to the Bolt Cloud.
 
 # Installation steps
-Please follow the steps to include the BoltIoT-Arduino-Helper library to Arduino
-1. Click [here](https://github.com/Vinayakj009/boltiot-arduino-helper/archive/master.zip) to download the zip
+Please follow the steps to include the boltiot library to Arduino
+1. Click [here](https://github.com/Vinayakj009/boltiot/archive/master.zip) to download the zip
 2. Open Arduino IDE.
 3. Click on ```Sketch->Include Library->Add .Zip library```.
-4. Navigate to the folder where boltiot-arduino-helper-master.zip was downloaded, and select boltiot-arduino-helper-master.zip.
+4. Navigate to the folder where boltiot-master.zip was downloaded, and select boltiot-master.zip.
 5. Press the 'Choose' button and the library is loaded to your Arduino IDE.
 
 # (Optional) Defining global API key and device id (Details of why this is needed will be added later)
 While it is a good idea to define the API key and device id as a part of the code, it is sometimes troublesome to write the corresponding code everytime you have a new project.
 You can define a global API key or device id, by using the following steps.
-1. Go to the ```libraries/boltiot-arduino-helper-master/src``` folder inside your sketchbook folder. The sketchbook folder is normally ```My Documents/Arduino``` folder for windows and ```~/Documents/Arduino/``` folder in Mac and Linux. 
+1. Go to the ```libraries/boltiot-master/src``` folder inside your sketchbook folder. The sketchbook folder is normally ```My Documents/Arduino``` folder for windows and ```~/Documents/Arduino/``` folder in Mac and Linux. 
 2. Open the file ```BoltDeviceCredentials.h``` file in a text editor.
 3. Uncomment API_KEY or DEVICE_ID or both macros, whichever you want to make common across all examples.
 4. Replace the dummy values with actual value for the corresponding macro.
@@ -82,7 +82,7 @@ This function has to be called at the least once per second for it to work prope
 
 The function returns a 'true' when it receives the "RD\r" command from the Bolt, and false when it does not receive the "RD\r" command from the Bolt.
 
-To learn more about this function read the example given in File>Examples>BoltIoT-Arduino-Helper>PushData in your Arduino IDE.
+To learn more about this function read the example given in File>Examples>boltiot>PushData in your Arduino IDE.
 
 ## setCommandString
 ***If you use this function, remember to also use the handleCommand function***<br>
@@ -119,7 +119,7 @@ https://cloud.boltiot.com/remote/{API_KEY}/serialRead?deviceName={DEVICE_ID}
 ```
 To learn more about the SerialRead API call click [here](https://docs.boltiot.com/docs/read-incoming-serial-data) and SerialWrite API call click [here](https://docs.boltiot.com/docs/send-serial-data-output).
 
-To learn more about this function read the example given in File>Examples>BoltIoT-Arduino-Helper>CommandHandler in your Arduino IDE.
+To learn more about this function read the example given in File>Examples>boltiot>CommandHandler in your Arduino IDE.
 
 Please Note: To have the functions called when the corresponding command is received from the Bolt, you need to call the handleCommand function in the loop function at the least once every second.
 
@@ -154,7 +154,7 @@ boltiot.handleCommand();
 Remember to go through the Examples packaged along with this library. They contain better explanations of how to use the Command Response model for this library.
 ## Interfacing via hardware serial port
 ```cpp
-#include <BoltIoT-Arduino-Helper.h>
+#include <boltiot.h>
 
 void setup() {
   boltiot.begin(Serial); //Initialize the Bolt interface over serial UART. Serial could be replaced with Serial0 or Serial1 on Arduino Mega boards.
@@ -172,7 +172,7 @@ void loop() {
 
 ## Interfacing via software serial port
 ```cpp
-#include <BoltIoT-Arduino-Helper.h>
+#include <boltiot.h>
 
 void setup() {
   boltiot.begin(3,4); //Initialize the Bolt interface over software serial UART.

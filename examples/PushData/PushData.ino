@@ -1,5 +1,5 @@
 
-#include <BoltIoT-Arduino-Helper.h>
+#include <boltiot.h>
 
 /*
  * This code monitors the status of pin 2, 

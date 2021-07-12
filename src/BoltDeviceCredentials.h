@@ -4,7 +4,7 @@
  * File:   BoltDeviceCredentials.h
  * Author: Inventrom
  *
- * Created on 2 August, 2018, 8:00 AM
+ * Created on 12 July, 2021, 4:00 PM
  */
 
 #ifndef BOLD_DEVICECREDENTIALS_H
