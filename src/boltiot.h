@@ -1,10 +1,10 @@
 /* Provided by Inventrom for interfacing Bolt to Arduino */
 
 /* 
- * File:   BoltIoT-Arduino-Helper.h
+ * File:   boltiot.h
  * Author: Inventrom
  *
- * Created on 1 September, 2017, 8:00 AM
+ * Created on 12 July, 2021, 4:00 PM
  */
 
 #ifndef BOLTIOT_H
@@ -41,7 +41,7 @@ class BoltIoT {
         String returnData; //Holds the data returned by the callback, which has to be sent back
         char dataDelimiter; //the character which will separate the command from arguments. Example SetPin;pinNumber=3;pinState=HIGH;
         CommandList *nextCommand; // This forms a linked list, linking to the next command in the list.
-    }; //This class is defined here, to ensure that it only works with the Bolt IoT Arduino Helper library 
+    }; //This class is defined here, to ensure that it only works with the boltiot library 
 
     Stream *communicationPort; //Holds the communication port at which Bolt is connected.
     String receivedString; //Holds the command currently being passed

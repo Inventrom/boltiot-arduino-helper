@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map for BoltIot-Arduino-Helper
+# Syntax Coloring Map for boltiot
 #######################################
 
 #######################################

@@ -1,5 +1,5 @@
 
-#include <BoltIoT-Arduino-Helper.h>
+#include <boltiot.h>
 
 /*
  * With this code the user will be able to use the SerialWrite API 

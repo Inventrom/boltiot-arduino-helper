@@ -1,5 +1,5 @@
 
-#include <BoltIoT-Arduino-Helper.h>
+#include <boltiot.h>
 
 /*
  * This code combines Push data code with Command Handler Code.
