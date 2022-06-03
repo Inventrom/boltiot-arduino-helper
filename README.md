@@ -5,7 +5,7 @@ By using this library, any data collected or processed by the Arduino can be sen
 
 # Installation steps
 Please follow the steps to include the boltiot library to Arduino
-1. Click [here](https://github.com/Vinayakj009/boltiot/archive/master.zip) to download the zip
+1. Click [here](https://github.com/Inventrom/boltiot-arduino-helper/archive/refs/heads/master.zip) to download the zip
 2. Open Arduino IDE.
 3. Click on ```Sketch->Include Library->Add .Zip library```.
 4. Navigate to the folder where boltiot-master.zip was downloaded, and select boltiot-master.zip.
